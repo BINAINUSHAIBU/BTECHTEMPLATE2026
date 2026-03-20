@@ -3575,14 +3575,32 @@
         </ul>
       </div>
     </div>
+		
+	
+<script src="https://cdn.paddle.com/paddle/paddle.js" type="154d7dcd9ec50f9ca2014092-text/javascript"></script>
+<script type="154d7dcd9ec50f9ca2014092-text/javascript">
+document.addEventListener('DOMContentLoaded', function () {
 
-    <script
-      src="https://cdn.paddle.com/paddle/paddle.js"
-      type="a9c7b4095f61649aa6fdec81-text/javascript"
-    ></script>
-    <script type="a9c7b4095f61649aa6fdec81-text/javascript">
-      Paddle.Setup({ vendor: 134322 });
-    </script>
+  Paddle.Setup({ vendor: 134322 });
+
+  document.querySelectorAll('.pre-checkout').forEach(form => {
+    const buttonId = form.dataset.button;
+    const button = document.getElementById(buttonId);
+
+    button.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      const selected = form.querySelector('input[type="radio"]:checked');
+      if (!selected) return;
+
+      Paddle.Checkout.open({
+        product: selected.value
+      });
+    });
+  });
+
+});
+</script>
 
 <div id="content" class="gridlove-site-content container">
     <div class="gridlove-content gridlove-full-width" style="text-align: center;">
@@ -3866,6 +3884,8 @@
 </div>
 
 
+
+	
 
     <div id="footer" class="gridlove-footer">
       <div class="container">
